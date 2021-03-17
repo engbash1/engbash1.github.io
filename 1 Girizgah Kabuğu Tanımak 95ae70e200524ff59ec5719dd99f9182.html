@@ -1,0 +1,628 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>1. Girizgah: Kabuğu Tanımak</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a893d8e8-76ac-4063-b8d8-30b27fbb0cbd" class="page sans"><header><h1 class="page-title">1. Girizgah: Kabuğu Tanımak</h1></header><div class="page-body"><p id="a3dc3a88-72dd-4e03-9090-9c7b04f514e5" class="">Bash kabuğunun detaylarına değinmeden evvel, sağlam bir temel için önemli olan birkaç kavramı netleştirmemiz gerekiyor. Tüm detayları ile olmasa da kullanacağımız sistemin arkaplanda nasıl çalıştığı ve nasıl bir yapıya sahip olduğu konusunda fikir sahibi olmamız, ileride yapacağımız tüm işlemleri çok daha bilinçli şekilde gerçekleştirebilmemizi sağlar.</p><h1 id="73fc6016-f7b6-41fd-a7d7-ceaaddf98d16" class="">1.1 İşleyişe Genel Bakış </h1><p id="5fb5804b-9291-483f-ad15-a6ab100446c8" class="">Bash kabuk programlamayı öğrenmek istediğinize göre Linux&#x27;un aslında çekirdek olduğunu GNU oluşumunun ise çeşitli araçlar sağladığını, neticede işletim sistemi(GNU/Linux) bütününün ortaya çıktığını biliyorsunuzdur. Hatta çekirdeğin ne işe yaradığını da mutlaka duymuşsunuzdur. Şimdi kısa bir hatırlatma olması açısından bu işleyişe biraz daha yakından bakarak olup bitenleri anlamlandırmaya çalışalım.</p><p id="1c47b9ea-a324-4d57-a098-bb74f5fa3a56" class="">Bilgisayarımızı(donanım) ve içerisinde çalıştırılan işletim sistemini(yazılım) en basit haliyle aşağıdaki şekilde soyutlayabiliriz.</p><figure id="95ae70e2-0052-4ff5-9ec5-719dd99f9182" class="image"><a href="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/OS.svg"><img src="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/OS.svg"/></a></figure><p id="bc5377b0-f5a7-401b-8dc5-110589f9edd3" class="">Hangi donanımın hangi işlevde olduğunu henüz ele almayacağımız için biz doğrudan &quot;işletim sistemi&quot; bölümüne daha yakından bakmaya başlayalım.</p><h1 id="2c5c4c31-62ff-4923-bb45-6756442458e3" class="">1.1.1 İşletim Sistemi</h1><p id="30719735-f96e-47b4-b0ab-a6be4484bee4" class="">İşletim sistemi, bilgisayarımızda bulunan donanım(disk, ram, cpu, monitör, ağ kartları, vb..) ile iletişim kurabilmemize olanak sağlayan aracı bir soyutlama katmanı yani yazılımsal bir arayüzdür. İşletim sistemleri sayesinde her bir donanım ile ayrı ayrı nasıl iletişim kuracağımızı düşünmeden, mevcut donanımlara kolayca iş yaptırabiliyoruz. Eğer böyle olmasaydı binlerce çeşit marka ve model donanımı nasıl bir arada idame edebilirdik ki ? </p><p id="0caeeea1-adb7-4ae2-8a31-1be543d73fab" class="">İşletim sisteminin bizi donanımlarla uğraşma külfetinden kurtardığını söyledik. Peki ama bunu tam olarak nasıl yapıyor ? </p><p id="4a1dff31-2cfb-4dd8-b992-e0f0cdcd9138" class="">İşletim sistemi temel olarak iki bölümden oluşur. Bu bölümler &quot;kullanıcı alanı(user space)&quot; ve &quot;çekirdek alanı(kernel space)&quot; olarak isimlendirilir. Bizler sistemi yöneten kullanıcılar olarak kullanıcı alanındaki araçları kullanırız. Bu araçlar da çekirdek ile iletişime geçer. Çekirdek ise kullanıcı alanından gelen emirleri donanıma ileterek ilgili işin yaptırılmasını sağlar. </p><p id="e810f32a-17b9-4c5e-9e39-bdbe55be1210" class="">Not: Aşağıdaki diyagram kullanıcı alanındaki temsili araçları içermektedir yani tüm sistem araçları bunlardan ibaret değil elbette. </p><figure id="371bcefd-5ee7-4588-a2da-3da2fcce422f" class="image"><a href="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/OS_detailed.svg"><img style="width:856px" src="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/OS_detailed.svg"/></a></figure><h2 id="bce3b987-85fc-4dcd-bc37-5cca1ce7558e" class="">1.1.1.1 Kullanıcı Alanı(User Space)</h2><p id="07ebca48-20c0-4835-9060-284ba36fce9f" class="">Standart bir kullanıcı olarak sistem üzerinde herhangi bir işi yaparken çok az şeyle ilgilenmek isteriz. Örneğin bir metin belgesine yazı yazıyorken donanıma nasıl iş yaptıracağımı falan düşünmem gerekmez, gerekmemelidir zaten. Ben sadece klavyemi kullanır yazımı yazar gerisini işletim sistemine bırakırım. İşletim sistemi bir önceki başlık altında açıkladığımız şekilde tüm gerekli işlemleri katmanlı yapısı sayesinde organize eder. </p><p id="64376adb-a5a7-49ca-9d73-08dffce4181a" class="">Tüm yapı içinde bizler kullanıcı olduğumuz için &quot;kullanıcı alanı&quot;, sistemi isteklerimiz doğrultusunda <strong>kolayca yönetebileceğimiz</strong> şekilde tasarlanmıştır. Yani kullanıcı alanına komuta kontrol alanı da diyebiliriz. Üstelik kullanıcı alanı, sistem yönetimi için bizlere iki alternatif ortam sunar. Bunlar &quot;grafiksel kullanıcı arayüzü(GUI)&quot; ve &quot;komutu satırı arayüzü(CLI)&quot; ortamlarıdır. </p><h3 id="86b57365-93f3-473b-8033-5bb905dfc9b5" class="">1.1.1.1.1 Grafiksel Kullanıcı Arayüzü</h3><p id="1c75bc69-63f7-4b1b-99a6-4e3878ab1480" class="">Grafiksel arayüzden kastımız genellikle fare kullanarak, bir takım tıklama ve sürükle bırak işlemleri ile sistemi yönetebildiğimiz görselliğin ön planda olduğu çalışma ortamıdır. Bu ortamda pencereler, butonlar vardır, sürükle bırak yapılabilir, bilirsiniz işte her zaman karşımıza çıkan grafiksel kullanıcı arayüzünden bahsediyorum. Söz konusu grafiksel arayüz ortamı olduğunda, görüntü sunucumuz, masaüstü ortamımız ve pencere yöneticimiz grafiksel arayüzü kullanabilmemizi kolaylaştıran araç setleridir. Sistemimizde yüklü bulunan grafiksel arayüze sahip araçları yalnızca grafiksel arayüz ortamı üzerinde kullanabiliriz. Grafiksel arayüzlü araçlara ofis yazılımlarını örnek verebiliriz.</p><h3 id="65a842d3-2de6-49e5-8993-7ed52f00484a" class="">1.1.1.1.2 Komut Satırı Arayüzü</h3><p id="5604dabf-8ff9-4f91-939d-ec35a8f3c98e" class="">Komut satırı arayüzü ise grafiksel arayüze sahip olmayan araçların çalıştırıldığı ortamdır. Bu ortamda grafiksel arayüzle çalışan araçları kullanamazsınız çünkü bu ortam grafiksel arayüzü sunabilecek yapıda tasarlanmamıştır. Komut satırı arayüzünde çalışan araçlar, grafiksel bir etkileşime ihtiyaç duymadan klavye üzerinden yönetilebilen araçlardır. Herhangi bir grafiksel etkileşim olmadığı için araçların bulunup çalıştırılması, araçlar arasında geçiş veya ortak kullanım gibi işler için kabuk bize yardımcı olur. Nasıl ki grafiksel arayüze sahip uygulamalar masaüstü ortamı gibi çevre birimleri sayesinde kolay yönetilebilir oluyorsa, kabukta komut satırı üzerinden çalıştırılan araçları organize şekilde yönetebilmemiz için bize gereken ortamı sağlar. Yani kısacası &quot;kabuk&quot; dediğimiz yapı bizim komut satırı üzerindeki yaverimizdir.</p><p id="2518c755-5edb-43cf-b559-b6a319c130fa" class="">Grafiksel arayüzde uygulama simgesine tıklarız, komut satırı arayüzünde kabuğa ilgili aracın ismini yazarız. Her iki ortam da bize sistem üzerindeki araçları; bulma, çalıştırma, takip etme ve gerektiğinde sonlandırma gibi konularda yani kısacası &quot;yönetimi&quot; konusunda yardımcı olurlar.</p><p id="8d8fe5a0-4a9f-43c4-8801-ad1b1dc0d3f9" class="">Şimdi çok basit bir örnek üzerinden sistem yönetiminin genel işleyişe bakalım. Örneğin ben yeni bir klasör oluşturmak istersem önümde iki temel seçenek bulunuyor. Bunlardan ilki grafiksel arayüze sahip olan dosya yöneticisini kullanmak, diğeri ise &quot;kabuk&quot; olarak ifade edilen sistem yönetim aracına komut vererek klasörün oluşturulmasını sağlamaktır. </p><p id="869a79c4-f7f6-4c20-b4eb-f7937d5388bb" class="">Grafiksel arayüzde sağ tıklayıp &quot;yeni klasör oluştur&quot; dememiz yeterli. Biz grafiksel arayüze sahip olan dosya yöneticisi aracını kullandığımızda, bu araç çekirdek ile iletişime geçip bizim gerçekleştirmek istediğimiz işlemi çekirdeğe ifade ediyor. Çekirdek, bu işlem için gereken tüm şartlar müsaitse sisteme bağlı bulunan donanıma bu işin nasıl yapılacağını izah ediyor. Ve en nihayetinde gerekli donanımlar çalıştırılarak bizim klasörümüz oluşturulmuş oluyor. Aşağıdaki diyagramda bu işlem akışının basit soyutlamasını görebilirsiniz. </p><figure id="7cc685c2-c24d-40fc-8807-10e342647a3b" class="image"><a href="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/only_gui.svg"><img style="width:1226px" src="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/only_gui.svg"/></a></figure><p id="5d6c7e6b-966f-4aa9-b769-b2cd074c9351" class="">Grafiksel arayüze sahip olmayan komut satırı arayüzlü araçlar da aslında tamamen benzer işleyişe sahiptir. Bu durumu teyit etmek üzere komut satırı arayüzü ile dosya oluşturulma akışına göz atalım. Sisteme yapılacak işlemi emredebilmek için terminal aracımı açıp gerekli ifadeyi komut satırına giriyorum.</p><figure id="9a117e8c-170e-4abe-9aee-c6ae646d1582" class="image"><a href="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/only_cli.svg"><img style="width:846px" src="1%20Girizgah%20Kabug%CC%86u%20Tan%C4%B1mak%2095ae70e200524ff59ec5719dd99f9182/only_cli.svg"/></a></figure><p id="abda1d06-c5f8-4cc2-8400-d74c577779cb" class="">Burada grafiksel arayüze gerek kalmadan klasör oluşturmamızı sağlayan araç &quot;mkdir&quot; aracıdır. Bu aracı kullanmak istediğimizi sisteme belirtmek için klavyemizdeki girdileri okuyan &quot;konsol&quot; ya da &quot;terminal&quot; olarak geçen aracı kullanıyoruz. Buradaki konsol aracının tek görevi, klavyemizdeki girdileri alıp &quot;kabuk&quot; olarak geçen yapıya aktarmaktır. Kabuk denilen yapı bizim yazılı şekilde ifade ettiğimiz komutu anlamlandırıp, &quot;mkdir&quot; aracını bulup &quot;klasor&quot; argümanı ile çalıştırılmasını sağlıyor. Bu sayede çalıştırılan &quot;mkdir&quot; aracı, &quot;klasor&quot; isimli klasör oluşturmak istediğini çekirdeğe izah edebiliyor. Çekirdek de donanıma gereken işi yaptırabiliyor. Neticede yalnızca yazılı emirler ile istediğimiz işlemin gerçekleştirilmesini kolaylıkla sağlamış oluyoruz.</p><p id="80f79c75-06ff-4c17-b225-c0169dfad6e9" class="">Sistemin en genel çalışma yapısı ele aldığımız şekildedir. Son olarak birkaç detaydan daha bahsedip kabuğa odaklanabiliriz. </p><p id="68db8673-c2f5-4459-9043-e87a871b3d6a" class="">Devam etmeden önce &quot;kabuk&quot; ile çok karıştırılan, &quot;konsol&quot; ya da &quot;terminal&quot; olarak bilinen &quot;komut satırı&quot; araçlarından bahsederek tüm kavramları netleştirmiş olalım.</p><h2 id="e63b8e43-9e54-4d2d-ac71-5cb89701fad5" class="">1.1.1.1.3 Terminal | Konsol | Komut Satırı</h2><p id="90977d37-0f8e-46f9-8d29-49e80dc7b65f" class="">Kabuğun, grafiksel arayüze gerek kalmadan sistemi yönetebilmemizi sağladığından bahsettik. Kabuğun grafiksel bir arayüzü olmadığı için kabuk ile iletişim kurarken emirlerimizi &quot;terminal&quot; ya da &quot;konsol&quot; olarak ifade edilen komut satırı araçları üzerinden ulaştırmamız gerekiyor. Yani adı üstünde komut satırı araçları yalnızca bizim klavyemizdeki girdileri satır satır alarak kabuğa iletmekle ve kabuğun döndürdüğü sonuçları göstermekle mükelleftir. Verilen emirleri komut satırı araçları yorumlamaz, yorumlayan kabuktur.</p><p id="a5ae90a8-5dcf-4e02-8e5f-57d2a7e7d4f0" class="">Biraz daha ayrıntılı bahsetmek gerekirse sistem üzerinde TTY olarak isimlendirilen sanal konsollar vardır. Bu konsollar arasında geçiş yapmak için <code>Ctrl + Alt + F1</code> <code>Ctrl + Alt + F2</code> veya duruma göre diğer <code>Ctrl + Alt + F2, F3, F4, F5, F6, F7</code> tuşlamaları kullanılabilir. </p><p id="87e717f0-204a-4b4c-83c8-860c232b8744" class="">Eğer mevcut sistemde grafiksel arayüz ortamı kuruluysa, TTY konsollarından en az birisi bu grafiksel arayüz ortamı için ayrılmıştır. Kullanılan dağıtıma göre farklılık gösteriyor olsa da genellikle 1. ya da 7. TTY konsolu, grafiksel arayüz ortamını çalıştırmak için ayrılmıştır. Grafiksel arayüz ortamında var olan herhangi bir terminal aracını açtığınızda bu terminal aracı aslında &quot;sözde TTY(pseudo-terminal(PTY olarak bilinir))&quot; olarak ifade edilen, grafiksel arayüz üzerinden dahi kabuğa emirler verebilmemizi sağlayan komut satırı sunar. Tüm bu yapı sayesinde biz ister grafiksel arayüz ortamında olalım istersek de yalnızca komut satırı arayüzünde çalışalım, neticede konsol araçları sayesinde kabuk ile iletişim kurabiliriz.</p><p id="a35ba837-0437-468a-99ea-edc11d622c76" class="">Zaten klasör oluşturma örneğimizi verirken grafiksel arayüzü üzerindeki terminal aracını yani &quot;sözde TTY(pseudo-terminal(PTY))&quot; kullanarak kabuk ile iletişim kurmuştuk. Dilersek aynı örneği komut satırı arayüzüne geçiş yaparak da sorunsuzca tekrar edebiliriz.</p><p id="71039b3b-b914-43bb-86cf-81c7676afd31" class="">Tüm bu açıkladıklarımız ışığında &quot;konsol&quot; aracının hangisi olduğunun bir önemi olmadığını ve bizim halimizden anlayacak esas şeyin kabuk olduğunu bizzat teyit etmiş olduk.</p><p id="22185545-5950-4aa9-bba1-5fdcc7994f9c" class="">Kabuk dediğimiz yapı da en nihayetinde bir yazılımdır. Dolayısıyla her yazılımda olduğu gibi kabuğun da pek çok alternatifi vardır. Biz bu eğitimde dünya çağında en yaygın kullanıma sahip olan &quot;Bash&quot; kabuğuna odaklanıyor olacağız. </p><h1 id="17524767-fefe-4b6d-b13d-5ab66d42572c" class="">1.2 Neden Bash ?</h1><p id="938823ac-42b3-4759-b90b-28232241b48c" class="">Bash kabuk dili, <strong>Stephen Bourne</strong>&#x27;nin UNIX için geliştirmiş olduğu &quot;<strong>sh&quot;</strong> kabuk dilini temel alarak geliştirildiği için; <strong>B</strong>ourne-<strong>A</strong>gain <strong>SH</strong>ell kelimelerinin kısaltması olan &quot;<strong>BASH&quot;</strong> şeklinde adlandırılmıştır. Günümüzde pek çok GNU/Linux dağıtımının varsayılan kabuğudur.</p><figure id="280060f9-da8a-4308-bb23-160d8cb2238d" class="image"><a href="https://raw.githubusercontent.com/taylanbildik/bash_script_dersleri/master/img/Readme/bash_shell.png"><img style="width:288px" src="https://raw.githubusercontent.com/taylanbildik/bash_script_dersleri/master/img/Readme/bash_shell.png"/></a></figure><p id="565166bf-6e15-458a-89ab-a742dad1df83" class="">Bash kabuk dilinin yaygın şekilde kullanılma sebebi; <strong>sh</strong> dili haricinde <strong>ksh</strong>(korn shell) ve <strong>csh</strong>(C shell) gibi çeşitli kabuk dillerinin yararlı özelliklerini içerisinde barındırarak, hem kullanıcı etkileşimi hem de programlanabilirlik için işlevselliği arttıran geliştirmeler içermesidir. Üstelik tüm bu avantajları, çıktığı dönemde GPL lisansı altında herkese özgürce sunmuştur. Dolayısıyla sahip olduğu özellikler çok hızlı şekilde, dağıtımlar üzerinde varsayılan kabuk olarak yaygınlaşmasını sağlamıştır. Genellikle kullanıcılar geçmişten beri var olan tüm konfigürasyonlarını bash üzerinde kurguladığı için de elbette yeni bir kabuğa geçmeye pek istekli değillerdir. Bu sebeple GNU/Linux sistemlerinde <strong>BASH</strong> dışında çeşitli kabuk dilleri barındırılmasına rağmen, genellikle sistemin varsayılan kabuk yorumlayıcısı <strong>BASH</strong>&#x27;dir. İstisnalar hariç, varsayılan kabuk bash değilse bile sistemde yüklü olacağı için kolayca ulaşabilirsiniz. Hatta tüm bunlar dışında &quot;sh&quot; kabuğu ile yakın ilişkisi sebebiyle &quot;bash&quot; bilen kişiler, bash kabuğunun bulunmadığı durumlarda sh kabuğunu da rahatlıkla kullanabilirler. Bizler de kullanılabilirlik açısında sahip olduğu yaygınlığı dolayısıyla &quot;BASH&quot; kabuğunu öğrenme gayretindeyiz. </p><h2 id="575fec62-fb61-4642-8767-aaa6c49ebb00" class="">1.2.1 Alternatif Kabuklar Hakkında</h2><p id="7fcd4f25-a0d1-4395-9ed6-4b262c5bf002" class="">Bir dönem Bash&#x27;in yaygınlaşmasını sağlayan GPL lisansı, yeni sürümü ile MacOS gibi ticari sistemlerde yol ayrımına neden olmuştur. Nitekim GPLv3 lisanslı ile birlikte uzun süredir yeni bash sürümlerini kullanamayan MacOS, varsayılan kabuğunu &quot;zsh&quot; olarak değiştirmiştir. Her ne kadar bash kabuğu hala MacOS üzerinde kullanılabilir olsa da zsh kabuğuna yaşanmış olan geçiş, zsh kabuğunun bash karşısında popülarite kazanmasının önüne açabilir. Hatta interaktif yani etkileşimli kullanımda zsh kabuğu daha işlevsel bulunduğu için Kali Linux gibi bazı dağıtımlar da varsayılan olarak zsh kabuğunu kullanmaya başlandı. Yine de tüm bunların yanında, bash kabuğu üzerine kurgulanmış olan ve çok uzun süredir kararlı şekilde çalışan sistemleri ele aldığımızda bash uzunca bir süre yaygınlığını koruyacak gibi görünüyor. Kabuk dilleri bağlamında, Bash dilini öğrenmenin İngilizce öğrenmeye benzetilmesi mümkündür. İngilizce haricinde pek çok yaygın kullanımda olan dil olsa da İngilizce evrenseldir. Dünyanın neresine giderseniz gidin bu dili kullanabilirsiniz. Bu durum da ilgili dili öğrenmenin en büyük motivasyonudur zaten.</p><p id="04bdfee7-3ebb-4a6b-a41b-82aa14affbc6" class="">Eğer söz konusu olan &quot;etkileşimli kullanımda kolaylık&quot; ise, zsh yerine fish(friendly interactive shell) kabuğu da tercih konusu olabilir. Ama bizim odaklandığımız şey etkileşimli kullanım değil, evrensel olan bash kabuğunu programlayabilmektir. Özetle yaygınlığı, kararlı ve kolay programlanabilir yapısı dolayısı ile kabuk dilleri içinde &quot;Bash&quot; bizim &quot;İngilizce&quot; dilimizdir.</p><p id="7a67709a-517f-4a4a-80a0-090a58d38dde" class="">Biraz önce bahsettiğimiz &quot;<strong>etkileşimli</strong>&quot; ve &quot;<strong>programlanabilir</strong>&quot; ifadelerini kısaca açıklayacak olursak;</p><p id="2ac8d7b4-8d44-48b4-a416-5de3b366dcbd" class=""><strong>Kabuğun etkileşimli olması demek</strong>, anlık olarak kullanıcıdan gelen emirleri yorumlayıp yine kullanıcıya emirin sonucu sunmasıdır. Etkileşimli kabuklar sürekli kullanıcıdan emirler bekler yani kullanıcı ile sürekli etkileşim halindedirler. Daha önce de bahsettiğimiz şekilde farklı kabuk türlerinde bu etkileşim deneyimi de farklıdır. Kabuklar, renklendirme ve otomatik öneri ya da otomatik tamamlama gibi kullanımı kolaylaştırıcı çeşitli özelliklere sahiptir. Kimi kabukta etkileşim için sunulan özellikler fazlayken kimisinde bu gibi özellikler azdır veya hiç yoktur. Bu da kabuklar arasındaki &quot;etkileşimde kolaylık&quot; farklılığını oluşturan unsudur.</p><p id="ad4ea52b-6552-432a-a800-48a2dade3455" class="">Örneğin ben sırasıyla konsola <code>pwd</code> ve <code>whoami</code> komutlarını girdiğimde ve çıktı olarak bulunduğum dizin ve oturum açtığım kullanıcı hesabını aldığımda kabuk ile etkileşime geçmiş oluyorum. Çünkü kabuk benden komut bekleyip benden aldığı komutları yorumlayıp sonuçlarını tekrar bana iletmiş oldu.</p><p id="b492e05c-d046-4d91-986d-41311663a525" class=""><strong>Programlanabilir olması ise</strong>, kabuğa verilebilecek olan emirlerin bir dosya içerisinde uygun şekilde toparlanması ve bu dosyanın çalıştırılması ile emirlerin yerine getirildiği kullanımdır. Bu kullanımda aktif kullanıcı etkileşimi şart değildir çünkü emirler önceden programlandığı şekilde otomatik olarak yerine getirilir.</p><p id="ac417b13-72ef-4922-b6be-385101da8f7f" class="">Daha önce verdiğimiz örnekteki <code>pwd</code> ve <code>whoami</code> komutlarını bir dosyaya kaydedip dosyayı çalıştırdığımda ise, tek seferde iki komutta çalıştırılmış oluyor. Yani kabuk dosyayı okuyup çalıştırırken benden bir etkileşim beklemeden doğrudan işini yapıyor. İşte çok daha düzenli yapılar ile komutları bir dosyaya kaydedip tek sefer çalıştığımızda kabuğu programlamış oluyoruz. Hatta benim burada dosyayı elle çalıştırmama takılmış dahi olabilirsiniz. Dosyayı elle çalıştırmamıza da gerek yok, zamanlanmış görevler gibi yapılar sayesinde otomatik olarak çalıştırılmasını da sağlayabiliriz. </p><p id="d54cc2d9-59ec-4eac-9ace-156b077f401b" class="">Bizler de bu eğitim serisinde bash kabuk dilini <strong>nasıl programlayabileceğimiz</strong> üzerinde duruyor olacağız. Burada bahsi geçen &quot;kabuk dilinin programlanması&quot; bash özelinde &quot;<strong>bash shell scripting</strong>&quot; olarak geçiyor. Bu tanımı Türkçe olarak &quot;<strong>bash kabuk senaryolaştırması</strong>&quot; olarak da ifade edebiliriz. Buradaki &quot;<strong>senaryolaştırma</strong>&quot; ifadesi biraz garip bir tanım olsa da aslında yapacağımız işi gayet iyi özetliyor. Zira programlama yaparken aslında durumlara özel senaryolar yazacağımız ve kabuk da bu senaryoya uygun hareket edeceği için &quot;<strong>programlama</strong>&quot; yerine &quot;<strong>senaryolaştırma</strong>&quot; ifadesi de doğru bir çağrışım yapabilir. Tüm bu kavram açıklamalarına ek olarak &quot;<strong>shell script</strong>&quot; ifadesi Türkçe kısaca &quot;<strong>betik&quot;</strong> olarak da tabir edilebiliyor. Programlama işlemine &quot;<strong>betik programlama&quot;</strong>, oluşturacağımız &quot;<strong>script dosyalarına</strong>&quot; da kısaca &quot;<strong>betik</strong>&quot; denebiliyor yani. Aslında nasıl isimlendirildiğinin çok da bir önemi yok. Sadece ileride farklı isimler ile duyduğunuz zaman şaşırmamanız için kısaca bahsetmek istedim.</p><h2 id="180fe190-5978-4e2a-a9e2-26371cbe8f01" class="">1.2.2 Betik Programlamanın Yapısı</h2><p id="9a9d6eda-0ec4-4872-8382-0f5190f170d6" class="">Bash kabuğu aslında hem komut yorumlayıcısı hem de bir programlama dilidir. Komut yorumlayıcısı işlevi, sistem üzerindeki araçlar ile kullanıcı arasındaki arabirimi sağlar. Kabuk sayesinde bu araçları bulup, çalıştırabilir ve gerektiğinde sonlandırabiliriz. Programlama dili olması ise, gerektiğinde sistem üzerindeki araçların organize şekilde birleştirilerek kullanılmasına imkan verir. Komutlar tek bir dosya içerisinde uygun şekilde toparlandığında, pek çok aracın tek bir dosya üzerinden tek bir komutla yönetilebilmesi mümkün olur. Kısacası, kabuk programlama ile kolayca tam ihtiyacımıza uygun çözümler sunabilen çok yönlü sistem yönetimi araçlarına sahip oluruz. Zaten kabuklar, mevcut araçların etkili biçimde bir arada çalıştırılabilmesi için bize programlanabilme imkanı sunarlar.</p><h2 id="dce17a32-c216-427c-8f9a-f6bf5e10527f" class="">1.2.3 Kullanılan Bash Sürümü ve Yeniliklerin Takibi</h2><p id="34ebcb8e-b4e1-469f-bfcb-7618e374fb07" class="">Elbette zaman içinde bash kabuğunda yenilikler olacaktır. Yani burada ele alınan sürüm sizin okuduğunuz dönemde eskimiş olabilir. Hatta siz kasıtlı olarak bu kitapta ele alınandan daha eski bir bash kabuğunu da kullanıyor olabilirsiniz. Peki bu durumda bu kitaptaki bilgiler, ele alındığı(bash v5.1) sürüm haricinde hükümsüz mü ? </p><p id="93a0d204-ac81-4138-9a9e-47b172294fcf" class="">Kesinlikle hayır. Sürümler arasındaki farklılıklar genellikle mevcut hataların düzeltilmesi veya yeni alternatif çözümlerin(özellikler ve araçlar) sunulması şeklindedir. Güncellemeler eski sürümdeki yapıları değiştirmekten kaçınır çünkü halihazırda yazılmış olan betiklerin yeni sürümlerde çalışmaz hale gelme ihtimali vardır. Herhangi bir nedenle mevcut bir aracın ya da özelliğin temel çalışmasını etkileyecek şekilde değiştirilmesi gerekirse, mevcut olanı değiştirmek yerine değişikliği içeren yeni bir araç ya da özellik sunulur. Bu sayede eski özellikler ve araçlar yeni sürümlerde de kullanılabilir olurken, yeni ihtiyaçlara cevap verebilen yeni araçlar ve özellikler de sunulmuş olur. En nihayetinde kabuk üzerindeki değişikler var olanı bozmadan yeni çözümler sunmak için yapılır. Kabuk güncellemeleri geriye dönük uyumluluk içerisindedir. </p><p id="4c6524d9-6ced-4c6c-b668-31a6c29b9fc2" class="">Bu sebeplerle kullanmakta olduğunuz bash sürümü hangisi olursa olsun, sürümler arasındaki farklılıkları görmek adına &quot;değişim notlarına&quot; kısaca göz atmanız yeterlidir. Değişim notlarına göz attığınızda, genellikle mevcut özelliklerin iyileştirilmesi ya da alternatif olarak aynı işi kolaylaştırıcı özelliklerin getirildiğini teyit edebilirsiniz. Ben değişim notlarına bakmanız için doğrudan bir bağlantı adresi sunmuyorum çünkü bu adresin sizin okuduğunuz dönemde geçersiz olma ihtimali var. Sadece kısa bir internet araştırması ile sürümler arasındaki tüm değişimlerin detaylı listesine kolaylıkla ulaşabilirsiniz. </p><h2 id="d6e1db58-abd6-4bba-b23a-4d7f06d659aa" class="">1.2.4 Neden Bash Programlama Öğrenmeliyiz ?</h2><p id="bee31ce6-ecc4-4b57-b2a7-fd7f95b4321b" class="">Halihazırda bu kitabı okuduğunuza göre Bash programlamayı önemli bulduğunu varsayabiliriz. Yine de kısaca Bash kabuğunu programlama becerisi ve bize sağlayacağı katkılar neden önemli diyenler için, olası senaryolara bir kaç örnek verelim.</p><h3 id="39ac1325-1cc7-48bd-96e8-a4a4f008172f" class="">1.2.4.1 Otomatikleştirilebilir işleri yerine getirir.</h3><p id="67f53863-bb6a-42b2-8035-2fbb2c744fca" class="">Hangi amaçla olursa olsun her gün sistem yönetimi için tekrar ettiğiniz rutinleri düşünün. Günlük rutinler için kısa sürede hazırlayıp kullanabileceğiniz bir betik yazsanız ve her gün zamandan tasarruf etseniz fena mı olur ?</p><p id="2e2ba732-5b40-42b6-a8a9-41693267db0f" class="">En basit işlerden en karmaşık sorunlara kadar, kabuk üzerinde defaatle uygulamanız gereken her türlü işi kısa sürede betik hazırlayarak otomatikleştirebilirsiniz. Bu sayede siz veya siz yokken sizin yeteneklerinize ihtiyaç duyan kişiler bu betikler üzerinden spesifik sorunları kolayca çözümleyebilir. Özetle betik dosyaları bizim yardımcı sistem yöneticilerimizdir.  </p><h3 id="7a54c787-d392-4029-a6b8-271c419f6ec4" class="">1.2.4.2 Sistem Üzerindeki Her Araçtan Faydalanılabilir</h3><p id="25bf86bd-2773-475d-880c-ec5c16ae50f0" class="">Kabuk programlamanın esas amacı araçlar arasında yapıştırıcı görevi görmektir. Sistemde yüklü bulunan araçları bir arada organize şekilde çalıştırabilmemizi sağlar. Zaten kabuk tek başına bir anlam ifade etmez. Kabuk kullanımını güçlü kılan şey sistemde yüklü bulunan araçlardır. Kabuk yalnızca bu araçların çalıştırılması ve çıktılarının başka araçlara aktarılarak tekrar işlenebilmesi için gereken ortamı sağlar. Kabuğu orkestra şefi gibi düşünebilirsiniz. Sesler müzisyenlerin çaldığı aletlerinden gelir ancak tüm müzisyenlerin uyum içinde çalmasını sağlayan şeftir. </p><p id="13df51d2-9350-439f-9693-eb2f8532214b" class="">Örnek bir senaryoda; betik dosyama, &quot;öncelikle python dili oluşturulmuş olan program dosyasını çalıştır, dosyanın ürettiği çıktılar doğrultusunda perl dili ile oluşturulmuş programı çalıştırıp en son elde edilen çıktıları bir dosyaya yazdır&quot; diyebilirim.</p><p id="46dc59e6-9402-463d-9e49-77a39e102f07" class="">Yaptığımız işlem sistem yönetim komutlarını tek bir dosyada düzenli olarak toparlamak olduğu için, sistemi yönetirken yapabileceğimiz gibi farklı programlama dilleri ile geliştirilmiş olan araçların ortak paydada çalışmasını sağlayabiliyoruz. Böylelikle temel işlevleri yerine getiren pek çok farklı aracı bir arada kullanarak karmaşık sorunlara çözüm üretebiliriz. Zaten unix felsefesi gereği sistem üzerindeki araçlar genellikle tek bir işi en iyi şekilde yapmak üzere hazırlanmıştır. İşini en iyi şekilde yapan araçların kombinasyonu organize şekilde çalıştırılarak sınırsız çeşitlilikte çözüm yolu sunabilirler. Kabuk kullanımını güçlü kılan da zaten bu yaklaşımdır. </p><p id="6d587a9b-dfaf-4e3a-b034-8f712d7e530d" class="">Ayrıca farklı programlama dilleri ile kabuğun sunduğu, &quot;araçların ortak çalıştırılması&quot; imkanını elde etmek de mümkündür. Ancak pek çok durumda geliştirme aşamasının uzun ve zorlu olmasının yanı sıra, araçların esnekliği kabuğa oranla düşük olacaktır. </p><h3 id="ad30d951-553c-4927-8748-a74c123ccfa1" class="">1.2.4.3 Etkileşimli Kullanımda Ve Sistem Yönetiminde Verimliliğimizi Artırır</h3><p id="a7af9b06-c3a8-44ce-b9a4-318829b952a6" class="">Bash kabuk programlamayı öğrenirken aslında bash kabuğunun yapısını öğreneceğimiz için programlama haricinde etkileşimli kullanımda da pek çok yetiye sahip olacağız. Yani bash kabuğuna sahip sistemleri çok daha efektif şekilde anlık olarak konsoldan yönetebiliyor olacağız. Ayrıca sistem üzerinde işlerimizi otomatikleştirmek istediğimizde yaptığımız işlemeler hakkında daha detaylı bilgi sahibi olmamız gerekir. Dolayısıyla kabuk programlarken sistemi daha yakından tanıma fırsatı bulabiliriz.</p><h2 id="7b71fba3-7f86-4242-96dc-206ce609ded4" class="">1.2.5 Özetle</h2><p id="db97f9c1-1490-4289-a8e1-7f601efce6d9" class="">Betik programlamanın sağladığı imkanlar üzerine pek çok örnek verebiliriz. Kısacası söz konusu sistemi yönetmek olduğunda kabuk bizim dostumuzdur. Dostumuz olan kabuğu daha yakından tanımak onu daha etkili kullanabilmemizi sağlar. Söz konusu kabuk tercihi olduğunda da alternatiflerine oranla yaygınlığı dolayısı ile &quot;Bash&quot; kabuğunu öğrenmek makul bir yaklaşımdır. Bu eğitimin esas amacı da bash kabuğunun programlanabilir yapısı üzerinden kabuğu daha yakından tanıyabilmemizdir. </p><p id="32d5e077-49c6-4172-af79-c1570bfd5909" class="">Betik programlamanın tüm bu özelliklerini dikkate aldığımızda; ihtiyaçlarımıza göre script yazarak bizler için çalışan ve yorulmak bilmeyen binlerce sistem yöneticisi üretebiliriz.</p><p id="67ef99c7-45f6-454e-825f-4ece847529de" class="">Eğer bash kabuğu sizin için sihirli bir kutuysa, baştan belirteyim hepsi illüzyondan ibaret. Birlikte bash kabuğunun tüm numaralarını deşifre edeceğiz. </p><p id="1da60948-cf58-43ec-b8e0-17298b094264" class="">Hazırsanız bu üstün gücü nasıl kontrol edebileceğimizi öğrenmeye başlayalım :)</p><p id="7a101137-0a2f-4496-a3cf-5f82c21b9f07" class="">
+</p></div></article></body></html>
